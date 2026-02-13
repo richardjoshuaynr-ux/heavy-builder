@@ -1,0 +1,110 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: #1e1e1e;
+}
+
+#blocks {
+  width: 300px !important; /* Force width */
+  height: 100vh !important;
+  background: #252526 !important;
+  border-right: 1px solid #333;
+  overflow-y: auto;
+}
+
+#editor-row {
+  flex-grow: 1;
+  position: relative;
+}
+
+#styles-container {
+  width: 300px;
+  background: #252526;
+  border-left: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.panel-header {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #444;
+}
+
+/* This makes the GrapesJS internal labels white so you can see them */
+.gjs-sm-sector-title, .gjs-sm-label, .gjs-layers-name {
+  color: #ccc !important;
+}
+
+/* --- THE BLOCK BUTTONS --- */
+.gjs-block {
+  width: auto !important;
+  min-height: 80px !important;
+  background-color: #333 !important; /* Default dark grey */
+  color: #fff !important;
+  border: 1px solid #444 !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: grab !important;
+}
+
+/* --- THE BLUE GLOW EFFECT --- */
+/* We add 'body' at the start to make this rule stronger than GrapesJS defaults */
+body .gjs-block:hover {
+  background-color: #007acc !important; /* VS Code Blue */
+  border-color: #0098ff !important;
+  transform: translateY(-2px); /* Lifts the block slightly */
+  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.5) !important; /* The 'Glow' */
+}
+
+/* Ensure the text inside also stays white during the glow */
+.gjs-block-label {
+  font-size: 11px !important;
+  color: #ddd !important;
+  margin-top: 8px !important;
+  font-weight: 500 !important;
+}
+/* Make category headers bold and visible */
+.gjs-block-category .gjs-title {
+  background-color: #333 !important;
+  color: #fff !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #444;
+}
+
+/* Ensure blocks inside categories use your grid layout */
+.gjs-blocks-c {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+}
+/* Ensure the category header looks clickable */
+.gjs-block-category .gjs-title {
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 12px 15px !important;
+  user-select: none !important;
+}
+/* Rotate the arrow when the category is open */
+.gjs-block-category.gjs-open .gjs-title::after {
+  transform: rotate(180deg);
+}
+
+/* Smoothly hide the content when closed */
+.gjs-block-category:not(.gjs-open) .gjs-blocks-c {
+  display: none !important;
+}
